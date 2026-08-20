@@ -55,9 +55,18 @@ export default function Footer() {
         ))}
       </div>
       <div className={`${styles.legal} container`}>
-        Concept redesign for the Rolls-Royce Enthusiasts&rsquo; Club &middot;
-        Placeholder imagery stands in for licensed photography &mdash; replace
-        before production.
+        <p>
+          Concept redesign for the Rolls-Royce Enthusiasts&rsquo; Club &middot;
+          Placeholder imagery stands in for licensed photography &mdash; replace
+          before production.
+        </p>
+        <p>
+          Design by{" "}
+          <a href="https://webature.co.uk" target="_blank" rel="noopener noreferrer">
+            Webature
+          </a>{" "}
+          &mdash; webature.co.uk
+        </p>
       </div>
     </footer>
   );

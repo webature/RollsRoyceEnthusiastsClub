@@ -58,6 +58,23 @@
   color: #8b8576;
 }
 
+.legal p {
+  margin-bottom: 0.4rem;
+}
+
+.legal p:last-child {
+  margin-bottom: 0;
+}
+
+.legal a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.legal a:hover {
+  color: #cfc9bb;
+}
+
 @media (max-width: 850px) {
   .grid {
     grid-template-columns: 1fr 1fr;
