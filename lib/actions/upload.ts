@@ -29,7 +29,10 @@ export async function uploadImage(formData: FormData): Promise<UploadResult> {
   const ext = file.type.split("/")[1];
   const filename = `${randomUUID()}.${ext}`;
 
-  if (process.env.BLOB_READ_WRITE_TOKEN) {
+  // Vercel Blob auth: either the classic BLOB_READ_WRITE_TOKEN, or (newer
+  // connection method) BLOB_STORE_ID + an automatic Vercel OIDC token — the
+  // @vercel/blob SDK picks whichever is present on its own.
+  if (process.env.BLOB_READ_WRITE_TOKEN || process.env.BLOB_STORE_ID) {
     const blob = await put(filename, file, { access: "public" });
     return { url: blob.url };
   }
