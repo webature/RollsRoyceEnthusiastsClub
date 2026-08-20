@@ -49,3 +49,8 @@ dev.log
 
 # local dev image uploads (production uses Vercel Blob instead)
 /public/uploads
+
+# local Claude Code / agent-skill config (not project source)
+/.claude
+/.agents
+skills-lock.json
