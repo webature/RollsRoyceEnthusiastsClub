@@ -1,0 +1,23 @@
+.section {
+  padding: var(--space-section) var(--gutter);
+  max-width: 900px;
+}
+
+.section h2 {
+  margin-bottom: var(--space-md);
+}
+
+.section p {
+  font-size: 1.05rem;
+  line-height: var(--line-height-body);
+  max-width: 68ch;
+  margin-bottom: var(--space-sm);
+}
+
+.section p:last-child {
+  margin-bottom: 0;
+}
+
+.section .actions {
+  margin-top: var(--space-md);
+}

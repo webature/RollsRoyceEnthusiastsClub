@@ -1,0 +1,30 @@
+.accordion {
+  padding: var(--space-section) var(--gutter);
+  max-width: 900px;
+}
+
+.accordion details {
+  border-top: 1px solid var(--line);
+  padding: var(--space-md) 0;
+}
+
+.accordion details:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.accordion summary {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+.accordion summary::-webkit-details-marker {
+  display: none;
+}
+
+.accordion p {
+  margin-top: var(--space-sm);
+  line-height: var(--line-height-body);
+  max-width: 68ch;
+}

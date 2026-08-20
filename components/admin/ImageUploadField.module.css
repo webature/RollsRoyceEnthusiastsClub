@@ -1,0 +1,82 @@
+.wrap {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.preview {
+  position: relative;
+  width: 140px;
+  height: 100px;
+  flex-shrink: 0;
+  background: var(--paper);
+  border: 1px solid var(--line-strong);
+  overflow: hidden;
+}
+
+.preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.previewEmpty {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  color: rgba(27, 33, 29, 0.4);
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.fileLabel {
+  display: inline-block;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--line-strong);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.fileLabel:hover {
+  background: rgba(27, 33, 29, 0.04);
+}
+
+.fileInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.status {
+  font-size: 0.75rem;
+  color: rgba(27, 33, 29, 0.55);
+}
+
+.error {
+  font-size: 0.75rem;
+  color: #a33;
+}
+
+.remove {
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: 0.75rem;
+  color: #a33;
+  cursor: pointer;
+  text-align: left;
+}

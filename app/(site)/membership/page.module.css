@@ -1,0 +1,46 @@
+.pricing {
+  padding: 0 var(--gutter) var(--space-section);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gutter);
+  max-width: 900px;
+}
+
+.tier {
+  border: 1px solid var(--line-strong);
+  padding: var(--space-lg);
+}
+
+.tier h3 {
+  margin-bottom: var(--space-sm);
+}
+
+.rate {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-top: 1px solid var(--line);
+  font-size: 0.95rem;
+}
+
+.rate:first-of-type {
+  border-top: none;
+}
+
+.rate strong {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+
+.fee {
+  margin-top: var(--space-md);
+  font-size: 0.8rem;
+  color: rgba(27, 33, 29, 0.6);
+}
+
+@media (max-width: 700px) {
+  .pricing {
+    grid-template-columns: 1fr;
+  }
+}

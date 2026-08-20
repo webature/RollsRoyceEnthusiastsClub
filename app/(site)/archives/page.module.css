@@ -1,0 +1,26 @@
+.fees {
+  padding: 0 var(--gutter) var(--space-section);
+  max-width: 760px;
+}
+
+.fee {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: 0.9rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.fee:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.fee span:first-child {
+  max-width: 60ch;
+}
+
+.fee strong {
+  font-family: var(--font-display);
+  font-weight: 400;
+  white-space: nowrap;
+}
