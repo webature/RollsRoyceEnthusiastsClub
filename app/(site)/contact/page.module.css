@@ -1,0 +1,26 @@
+.grid {
+  padding: 0 var(--gutter) var(--space-section);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gutter);
+  max-width: 1000px;
+}
+
+.card h3 {
+  margin-bottom: var(--space-sm);
+}
+
+.card p {
+  line-height: var(--line-height-body);
+  margin-bottom: 0.4rem;
+}
+
+.card a {
+  border-bottom: 1px solid var(--line-strong);
+}
+
+@media (max-width: 700px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

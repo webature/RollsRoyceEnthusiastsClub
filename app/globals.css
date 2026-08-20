@@ -1,0 +1,188 @@
+:root {
+  /* Brand palette, carried forward from the original concept */
+  --ink: #1b211d;
+  --cream: #f2eee5;
+  --paper: #f8f5ee;
+  --gold: #a28a62;
+  --line: rgba(27, 33, 29, 0.14);
+  --line-strong: rgba(27, 33, 29, 0.22);
+
+  /* Placeholder imagery duotone, standing in for licensed photography */
+  --placeholder-a: #232b25;
+  --placeholder-b: #6b6455;
+
+  /* Spacing scale — formalized, generous, editorial rhythm */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 3.5rem;
+  --space-xl: 6rem;
+  --space-section: clamp(5rem, 4rem + 5vw, 9rem);
+  --space-section-lg: clamp(6rem, 4rem + 8vw, 12rem);
+  --gutter: clamp(1.5rem, 1rem + 3vw, 5rem);
+
+  /* Typography scale */
+  --font-display: var(--font-libre-caslon), Georgia, serif;
+  --font-body: var(--font-dm-sans), -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --text-display: clamp(3rem, 2.2rem + 4vw, 6.5rem);
+  --text-h1: clamp(2.75rem, 2.1rem + 3vw, 4.75rem);
+  --text-h2: clamp(2.25rem, 1.85rem + 2vw, 3.5rem);
+  --text-h3: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --text-lead: clamp(1.15rem, 1.05rem + 0.4vw, 1.5rem);
+  --text-body: 1.0625rem;
+  --text-small: 0.9rem;
+  --text-eyebrow: 0.6875rem;
+
+  --line-height-tight: 0.98;
+  --line-height-heading: 1.1;
+  --line-height-body: 1.75;
+
+  --max-width: 1400px;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100%;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+}
+
+h1 {
+  font-size: var(--text-h1);
+  line-height: var(--line-height-tight);
+}
+
+h2 {
+  font-size: var(--text-h2);
+  line-height: var(--line-height-heading);
+}
+
+h3 {
+  font-size: var(--text-h3);
+  line-height: var(--line-height-heading);
+}
+
+em {
+  font-style: normal;
+  font-weight: 400;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+.eyebrow {
+  font-size: var(--text-eyebrow);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.textLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 0.2em;
+  transition: opacity 0.2s ease;
+}
+
+.textLink:hover {
+  opacity: 0.65;
+}
+
+.btn {
+  display: inline-block;
+  padding: 1rem 1.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.7rem;
+  font-weight: 500;
+  border: 1px solid transparent;
+  background: none;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.btnLight {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.btnDark {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.btnOutline {
+  border-color: rgba(255, 255, 255, 0.4);
+  color: inherit;
+}
+
+.btnOutline:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.btnGhost {
+  border-color: var(--line-strong);
+  color: var(--ink);
+}
+
+.btnGhost:hover {
+  background: rgba(27, 33, 29, 0.05);
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+@media (max-width: 850px) {
+  :root {
+    --gutter: 1.5rem;
+  }
+}

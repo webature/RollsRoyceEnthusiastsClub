@@ -1,0 +1,175 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-lg);
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.header h1 {
+  font-size: 1.9rem;
+  margin: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.statCard {
+  border: 1px solid var(--line-strong);
+  padding: var(--space-md);
+}
+
+.statCard strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+}
+
+.statCard span {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(27, 33, 29, 0.6);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  text-align: left;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(27, 33, 29, 0.55);
+  border-bottom: 1px solid var(--line-strong);
+  padding: 0.6rem 0.75rem;
+}
+
+.table td {
+  border-bottom: 1px solid var(--line);
+  padding: 0.85rem 0.75rem;
+  vertical-align: top;
+}
+
+.table tr:hover td {
+  background: rgba(27, 33, 29, 0.03);
+}
+
+.status {
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.55rem;
+  border: 1px solid var(--line-strong);
+  display: inline-block;
+}
+
+.statusPublished {
+  color: #2f6b3f;
+  border-color: #2f6b3f;
+}
+
+.statusDraft {
+  color: var(--gold);
+  border-color: var(--gold);
+}
+
+.rowActions {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.empty {
+  padding: var(--space-lg) 0;
+  color: rgba(27, 33, 29, 0.55);
+}
+
+/* Forms */
+
+.form {
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+.field label {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(27, 33, 29, 0.6);
+}
+
+.field input,
+.field textarea,
+.field select {
+  font: inherit;
+  font-size: 0.95rem;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--line-strong);
+  background: #fff;
+  color: var(--ink);
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 140px;
+  line-height: 1.6;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+  outline: 1px solid var(--gold);
+}
+
+.hint {
+  font-size: 0.75rem;
+  color: rgba(27, 33, 29, 0.55);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-top: var(--space-sm);
+}
+
+.error {
+  color: #a33;
+  font-size: 0.85rem;
+}
+
+.deleteForm button {
+  background: none;
+  border: 0;
+  color: #a33;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0;
+}

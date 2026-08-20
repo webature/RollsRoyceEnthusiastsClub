@@ -1,0 +1,41 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gutter);
+  padding: var(--space-section) var(--gutter);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.card a {
+  display: block;
+}
+
+.image {
+  min-height: 220px;
+  margin-bottom: var(--space-sm);
+}
+
+.card .eyebrow {
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+}
+
+.card h3 {
+  font-size: 1.6rem;
+  margin-bottom: 0.6rem;
+}
+
+.card p {
+  line-height: var(--line-height-body);
+  color: rgba(27, 33, 29, 0.78);
+}
+
+@media (max-width: 850px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
