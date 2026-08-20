@@ -2,6 +2,7 @@
 
 import { useActionState } from "react";
 import type { EventFormState } from "@/lib/actions/events";
+import ImageUploadField from "./ImageUploadField";
 import styles from "@/app/admin/(protected)/admin.module.css";
 
 export type EventFormValues = {
@@ -85,9 +86,11 @@ export default function EventForm({
       </div>
 
       <div className={styles.field}>
-        <label htmlFor="coverImage">Cover image URL (optional)</label>
-        <input id="coverImage" name="coverImage" defaultValue={initialValues?.coverImage} placeholder="https://…" />
-        <span className={styles.hint}>Leave blank to use the placeholder pattern.</span>
+        <ImageUploadField
+          name="coverImage"
+          label="Cover image (optional)"
+          initialUrl={initialValues?.coverImage}
+        />
       </div>
 
       <div className={styles.field}>

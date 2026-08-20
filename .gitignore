@@ -46,3 +46,6 @@ next-env.d.ts
 
 # local dev logs
 dev.log
+
+# local dev image uploads (production uses Vercel Blob instead)
+/public/uploads

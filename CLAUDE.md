@@ -55,7 +55,7 @@ Only **News** (`Post` model) and **Events** (`Event` model) are database-backed 
 - `lib/actions/news.ts`, `lib/actions/events.ts` — admin Server Actions (`"use server"`) for create/update/delete. Each calls `revalidatePath` on the relevant public routes plus `/` (home shows a "Latest news" strip) after a mutation, since these are cache-affecting writes.
 - Public news/events pages and the homepage are `export const dynamic = "force-dynamic"` — they read the DB directly on every request rather than being statically prerendered, so admin edits show up immediately without a redeploy.
 - Body text is plain text with blank-line-separated paragraphs (`lib/format.ts#paragraphs`), not markdown/rich text — kept intentionally simple for MVP.
-- No image upload: `coverImage` is a URL text field. There's no licensed RREC photography yet, so upload infra (e.g. Vercel Blob) wasn't built until it's actually needed — see `components/ui/PlaceholderImage.tsx` for the gradient stand-in used everywhere a photo would go.
+- Image handling: admins upload a file directly (`components/admin/ImageUploadField.tsx`, a client component with a live preview) rather than pasting a URL. It calls `lib/actions/upload.ts#uploadImage`, which uploads to **Vercel Blob** when `BLOB_READ_WRITE_TOKEN` is set, or falls back to writing into `public/uploads/` (gitignored) for local dev with no extra setup. The resulting URL is stored in the hidden `coverImage` field the rest of the form submits normally. Production **requires** a Vercel Blob store connected (see Deploying below) — Vercel's filesystem is ephemeral, so the local-disk fallback would silently lose uploads there. `next.config.ts` allowlists the Blob CDN hostname under `images.remotePatterns` and raises the Server Actions body limit to `6mb` (Next's default 1MB is too small for image uploads) — see `components/ui/PlaceholderImage.tsx` for the gradient stand-in shown when a post/event has no cover image at all.
 
 ### Design system
 
@@ -72,5 +72,6 @@ Deployed via the GitHub integration (`webature/RollsRoyceEnthusiastsClub` → `r
 One-time setup still needed in the Vercel dashboard (not done from this environment — no CLI/API access here):
 
 1. Add a **Vercel Postgres** (Neon-backed) storage integration to the project; this populates `DATABASE_URL`.
-2. Set `ADMIN_EMAIL`, `ADMIN_PASSWORD`, and `SESSION_SECRET` (random 32+ char string) as Production env vars.
-3. After the first deploy, run `prisma migrate deploy` and the seed script once against the production `DATABASE_URL` (locally, with `DATABASE_URL` pointed at prod) to create the schema and the real first admin account.
+2. Add a **Vercel Blob** storage integration; this populates `BLOB_READ_WRITE_TOKEN`, which `lib/actions/upload.ts` needs for cover-image uploads to work in production.
+3. Set `ADMIN_EMAIL`, `ADMIN_PASSWORD`, and `SESSION_SECRET` (random 32+ char string) as Production env vars.
+4. After the first deploy, run `prisma migrate deploy` and the seed script once against the production `DATABASE_URL` (locally, with `DATABASE_URL` pointed at prod) to create the schema and the real first admin account.

@@ -26,7 +26,7 @@ After signing in you'll land on the dashboard, showing how many News posts and E
    - **URL slug** — leave blank to auto-generate from the title, or set your own (it becomes the web address, e.g. `/news/your-slug`).
    - **Excerpt** — one or two sentences shown in the News list and homepage.
    - **Body** — the full story. Leave a blank line between paragraphs; each becomes its own paragraph on the page.
-   - **Cover image URL** — a link to an already-hosted image (there's no upload button yet — see below). Leave blank to use a placeholder.
+   - **Cover image** — click **Upload image**, pick a photo from your computer, and you'll see a preview once it's uploaded (JPEG, PNG, WebP or GIF, up to 5MB). Click **Replace image** to swap it or **Remove image** to clear it. Leave it empty to use a placeholder.
    - **Status** — **Draft** keeps it hidden from the public site; **Published** makes it live immediately.
 3. Click **Create post**.
 
@@ -45,4 +45,4 @@ Events automatically sort into **Upcoming** and **Past** on the public `/events`
 
 ### About cover images
 
-There's currently no drag-and-drop image upload. To add a photo to a post or event, host it somewhere first (e.g. upload it to any image host you have) and paste the direct image URL into the **Cover image URL** field. Leaving it blank shows a neutral placeholder instead of a broken image.
+Uploaded images are stored in Vercel Blob storage on the live site, so anything you upload stays put across deploys — you don't need to host photos anywhere yourself.

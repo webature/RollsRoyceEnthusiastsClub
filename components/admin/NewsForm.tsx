@@ -2,6 +2,7 @@
 
 import { useActionState } from "react";
 import type { PostFormState } from "@/lib/actions/news";
+import ImageUploadField from "./ImageUploadField";
 import styles from "@/app/admin/(protected)/admin.module.css";
 
 export type NewsFormValues = {
@@ -60,9 +61,11 @@ export default function NewsForm({
       </div>
 
       <div className={styles.field}>
-        <label htmlFor="coverImage">Cover image URL (optional)</label>
-        <input id="coverImage" name="coverImage" defaultValue={initialValues?.coverImage} placeholder="https://…" />
-        <span className={styles.hint}>Leave blank to use the placeholder pattern.</span>
+        <ImageUploadField
+          name="coverImage"
+          label="Cover image (optional)"
+          initialUrl={initialValues?.coverImage}
+        />
       </div>
 
       <div className={styles.field}>
