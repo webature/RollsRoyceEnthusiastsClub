@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 import Editorial from "@/components/ui/Editorial";
 import ContentSection from "@/components/ui/ContentSection";
+import Reveal from "@/components/ui/Reveal";
+import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   title: "Sir Henry Royce Memorial Foundation",
@@ -33,6 +35,23 @@ export default function FoundationPage() {
           archive and headquarters.
         </p>
       </Editorial>
+
+      <div className={styles.statsStrip}>
+        <Reveal className={styles.statsGrid}>
+          <div className={styles.stat}>
+            <span className={styles.statNumber}>1977</span>
+            <span className={styles.statLabel}>Founded</span>
+          </div>
+          <div className={styles.stat}>
+            <span className={styles.statNumber}>Grade II</span>
+            <span className={styles.statLabel}>Listed — The Hunt House</span>
+          </div>
+          <div className={styles.stat}>
+            <span className={styles.statNumber}>1128686</span>
+            <span className={styles.statLabel}>Registered charity number</span>
+          </div>
+        </Reveal>
+      </div>
 
       <ContentSection title="Preservation and public access.">
         <p>

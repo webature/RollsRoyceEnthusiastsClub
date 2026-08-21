@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 import ContentSection from "@/components/ui/ContentSection";
+import Reveal from "@/components/ui/Reveal";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -33,7 +34,7 @@ export default function ContactPage() {
       </ContentSection>
 
       <div className={styles.grid}>
-        <div className={styles.card}>
+        <Reveal className={styles.card}>
           <p className="eyebrow">Club office</p>
           <h3>The Granary</h3>
           <p>Pury Hill Business Park</p>
@@ -44,15 +45,15 @@ export default function ContactPage() {
             first at{" "}
             <a href="mailto:hello@rrec.org.uk">hello@rrec.org.uk</a>.
           </p>
-        </div>
-        <div className={styles.card}>
+        </Reveal>
+        <Reveal className={styles.card} delay={120}>
           <p className="eyebrow">Archive &amp; foundation</p>
           <h3>The Hunt House</h3>
           <p>Paulerspury</p>
           <p>Northamptonshire</p>
           <p>Grade II listed home of the Sir Henry Royce Memorial Foundation.</p>
           <p>Open to visitors — free for members, chargeable for non-members.</p>
-        </div>
+        </Reveal>
       </div>
     </>
   );

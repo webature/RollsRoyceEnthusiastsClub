@@ -6,9 +6,10 @@
 .accordion details {
   border-top: 1px solid var(--line);
   padding: var(--space-md) 0;
+  transition: background 0.25s ease;
 }
 
-.accordion details:last-child {
+.accordion > :last-child details {
   border-bottom: 1px solid var(--line);
 }
 
@@ -17,10 +18,51 @@
   font-size: 1.4rem;
   cursor: pointer;
   list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
 }
 
 .accordion summary::-webkit-details-marker {
   display: none;
+}
+
+.accordion summary:hover {
+  color: var(--gold);
+}
+
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.icon::before,
+.icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: currentColor;
+  transition: transform 0.3s ease;
+}
+
+.icon::before {
+  width: 14px;
+  height: 1px;
+  transform: translate(-50%, -50%);
+}
+
+.icon::after {
+  width: 1px;
+  height: 14px;
+  transform: translate(-50%, -50%);
+}
+
+details[open] .icon::after {
+  transform: translate(-50%, -50%) rotate(90deg) scale(0);
 }
 
 .accordion p {

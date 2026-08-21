@@ -6,6 +6,25 @@
   max-width: 1000px;
 }
 
+.card {
+  padding: var(--space-lg);
+  border: 1px solid var(--line-strong);
+  background: var(--paper);
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px rgba(15, 18, 15, 0.12);
+}
+
+.card .eyebrow {
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
 .card h3 {
   margin-bottom: var(--space-sm);
 }
@@ -22,5 +41,9 @@
 @media (max-width: 700px) {
   .grid {
     grid-template-columns: 1fr;
+  }
+
+  .card:hover {
+    transform: none;
   }
 }

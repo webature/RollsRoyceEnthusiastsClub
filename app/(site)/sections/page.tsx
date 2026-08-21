@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 import ContentSection from "@/components/ui/ContentSection";
 import Editorial from "@/components/ui/Editorial";
+import Reveal from "@/components/ui/Reveal";
+import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   title: "Worldwide Sections",
@@ -17,6 +19,14 @@ export default function SectionsPage() {
         intro="18 Sections in the UK, and a further 18 across the rest of the world."
         image="/images/world-map.jpg"
       />
+
+      <Reveal className={styles.bigNumber}>
+        <span className={styles.number}>36</span>
+        <div>
+          <p className={styles.numberLabel}>Sections, worldwide</p>
+          <p className={styles.numberBreakdown}>18 across the UK, and a further 18 internationally.</p>
+        </div>
+      </Reveal>
 
       <ContentSection title="A local welcome, everywhere.">
         <p>

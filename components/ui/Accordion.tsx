@@ -1,3 +1,4 @@
+import Reveal from "./Reveal";
 import styles from "./Accordion.module.css";
 
 export default function Accordion({
@@ -8,10 +9,15 @@ export default function Accordion({
   return (
     <section className={styles.accordion}>
       {items.map((item, i) => (
-        <details key={item.question} open={i === 0}>
-          <summary>{item.question}</summary>
-          <p>{item.answer}</p>
-        </details>
+        <Reveal key={item.question} delay={i * 60}>
+          <details open={i === 0}>
+            <summary>
+              {item.question}
+              <span className={styles.icon} aria-hidden="true" />
+            </summary>
+            <p>{item.answer}</p>
+          </details>
+        </Reveal>
       ))}
     </section>
   );

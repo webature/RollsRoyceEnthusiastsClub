@@ -2,7 +2,17 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/ui/PageHero";
 import ContentSection from "@/components/ui/ContentSection";
+import Reveal from "@/components/ui/Reveal";
 import styles from "./page.module.css";
+
+const FEES = [
+  { service: "Build & test records (digital)", price: "£60 members / £120 non-members" },
+  { service: "Heritage Certificate", price: "£40 members / £80 non-members" },
+  { service: "Information lookup (first query)", price: "£10, +£5 per extra data point" },
+  { service: "Dating letter", price: "£40" },
+  { service: "Agreed valuation (members only)", price: "£75" },
+  { service: "DVLA registration retrieval assistance", price: "£50" },
+];
 
 export const metadata: Metadata = {
   title: "Archive Services",
@@ -28,30 +38,14 @@ export default function ArchivesPage() {
       </ContentSection>
 
       <div className={styles.fees}>
-        <div className={styles.fee}>
-          <span>Build &amp; test records (digital)</span>
-          <strong>£60 members / £120 non-members</strong>
-        </div>
-        <div className={styles.fee}>
-          <span>Heritage Certificate</span>
-          <strong>£40 members / £80 non-members</strong>
-        </div>
-        <div className={styles.fee}>
-          <span>Information lookup (first query)</span>
-          <strong>£10, +£5 per extra data point</strong>
-        </div>
-        <div className={styles.fee}>
-          <span>Dating letter</span>
-          <strong>£40</strong>
-        </div>
-        <div className={styles.fee}>
-          <span>Agreed valuation (members only)</span>
-          <strong>£75</strong>
-        </div>
-        <div className={styles.fee}>
-          <span>DVLA registration retrieval assistance</span>
-          <strong>£50</strong>
-        </div>
+        {FEES.map((fee, index) => (
+          <Reveal key={fee.service} delay={Math.min(index, 6) * 60}>
+            <div className={styles.fee}>
+              <span>{fee.service}</span>
+              <strong>{fee.price}</strong>
+            </div>
+          </Reveal>
+        ))}
       </div>
 
       <ContentSection

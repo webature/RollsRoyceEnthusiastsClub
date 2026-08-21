@@ -3,6 +3,7 @@ import Link from "next/link";
 import PageHero from "@/components/ui/PageHero";
 import ContentSection from "@/components/ui/ContentSection";
 import CardsGrid from "@/components/ui/CardsGrid";
+import Reveal from "@/components/ui/Reveal";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -36,42 +37,82 @@ export default function MembershipPage() {
       </ContentSection>
 
       <div className={styles.pricing}>
-        <div className={styles.tier}>
+        <Reveal className={`${styles.tier} ${styles.tierFeatured}`}>
+          <span className={styles.badge}>Most popular</span>
+          <p className="eyebrow">Digital</p>
           <h3>E-Membership</h3>
-          <div className={styles.rate}>
-            <span>Single</span>
-            <strong>£69 / yr</strong>
+          <p className={styles.tierDesc}>
+            All the benefits of membership, delivered instantly, online.
+          </p>
+          <ul className={styles.benefits}>
+            <li>Spirit &amp; Speed and The Bulletin, delivered online</li>
+            <li>Instant access — no waiting for the post</li>
+            <li>Full access to Sections, Registers and events</li>
+          </ul>
+          <div className={styles.rates}>
+            <div className={styles.rate}>
+              <div>
+                <span>Single</span>
+                <strong>
+                  £69<small>/yr</small>
+                </strong>
+              </div>
+              <Link className={styles.rateJoin} href="/membership/join?tier=e-single">
+                Join →
+              </Link>
+            </div>
+            <div className={styles.rate}>
+              <div>
+                <span>Joint</span>
+                <strong>
+                  £79<small>/yr</small>
+                </strong>
+              </div>
+              <Link className={styles.rateJoin} href="/membership/join?tier=e-joint">
+                Join →
+              </Link>
+            </div>
           </div>
-          <Link className={`textLink ${styles.joinLink}`} href="/membership/join?tier=e-single">
-            Join Single →
-          </Link>
-          <div className={styles.rate}>
-            <span>Joint</span>
-            <strong>£79 / yr</strong>
-          </div>
-          <Link className={`textLink ${styles.joinLink}`} href="/membership/join?tier=e-joint">
-            Join Joint →
-          </Link>
           <p className={styles.fee}>+ £35 joining fee, first year only.</p>
-        </div>
-        <div className={styles.tier}>
+        </Reveal>
+        <Reveal className={styles.tier} delay={120}>
+          <p className="eyebrow">Print</p>
           <h3>Paper Membership</h3>
-          <div className={styles.rate}>
-            <span>Single</span>
-            <strong>£95 / yr</strong>
+          <p className={styles.tierDesc}>
+            The full experience, with Spirit &amp; Speed and The Bulletin posted
+            to your door.
+          </p>
+          <ul className={styles.benefits}>
+            <li>Spirit &amp; Speed and The Bulletin, posted each issue</li>
+            <li>A printed keepsake to keep and collect</li>
+            <li>Full access to Sections, Registers and events</li>
+          </ul>
+          <div className={styles.rates}>
+            <div className={styles.rate}>
+              <div>
+                <span>Single</span>
+                <strong>
+                  £95<small>/yr</small>
+                </strong>
+              </div>
+              <Link className={styles.rateJoin} href="/membership/join?tier=paper-single">
+                Join →
+              </Link>
+            </div>
+            <div className={styles.rate}>
+              <div>
+                <span>Joint</span>
+                <strong>
+                  £110<small>/yr</small>
+                </strong>
+              </div>
+              <Link className={styles.rateJoin} href="/membership/join?tier=paper-joint">
+                Join →
+              </Link>
+            </div>
           </div>
-          <Link className={`textLink ${styles.joinLink}`} href="/membership/join?tier=paper-single">
-            Join Single →
-          </Link>
-          <div className={styles.rate}>
-            <span>Joint</span>
-            <strong>£110 / yr</strong>
-          </div>
-          <Link className={`textLink ${styles.joinLink}`} href="/membership/join?tier=paper-joint">
-            Join Joint →
-          </Link>
           <p className={styles.fee}>+ £35 joining fee, first year only.</p>
-        </div>
+        </Reveal>
       </div>
 
       <ContentSection

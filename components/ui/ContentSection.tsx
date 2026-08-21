@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Reveal from "./Reveal";
 import styles from "./ContentSection.module.css";
 
 export default function ContentSection({
@@ -12,9 +13,11 @@ export default function ContentSection({
 }) {
   return (
     <section className={styles.section}>
-      {title ? <h2>{title}</h2> : null}
-      {children}
-      {cta ? <div className={styles.actions}>{cta}</div> : null}
+      <Reveal>
+        {title ? <h2>{title}</h2> : null}
+        {children}
+        {cta ? <div className={styles.actions}>{cta}</div> : null}
+      </Reveal>
     </section>
   );
 }

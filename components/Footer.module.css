@@ -1,8 +1,19 @@
 .footer {
+  position: relative;
   background: var(--ink);
   color: #d9d3c6;
   padding-top: var(--space-xl);
   padding-bottom: var(--space-md);
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 64px;
+  height: 2px;
+  background: var(--gold);
 }
 
 .grid {
@@ -34,12 +45,17 @@
 }
 
 .linkCol a {
+  display: inline-block;
+  width: fit-content;
   color: #cfc9bb;
-  transition: color 0.2s ease;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .linkCol a:hover {
   color: #fff;
+  transform: translateX(3px);
 }
 
 .colHeading {
