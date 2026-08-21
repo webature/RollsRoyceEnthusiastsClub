@@ -1,0 +1,13 @@
+.wrap {
+  padding: var(--space-section) var(--gutter);
+  max-width: 640px;
+}
+
+.wrap p {
+  line-height: var(--line-height-body);
+  margin-bottom: var(--space-md);
+}
+
+.actions {
+  margin-top: var(--space-md);
+}

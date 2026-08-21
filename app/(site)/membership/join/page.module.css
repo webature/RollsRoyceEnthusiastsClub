@@ -1,0 +1,65 @@
+.wrap {
+  padding: var(--space-section) var(--gutter);
+  max-width: 640px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.field label {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(27, 33, 29, 0.6);
+}
+
+.field input,
+.field select {
+  font: inherit;
+  font-size: 0.95rem;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--line-strong);
+  background: #fff;
+  color: var(--ink);
+}
+
+.field input:focus,
+.field select:focus {
+  outline: 1px solid var(--gold);
+}
+
+.hint {
+  font-size: 0.75rem;
+  color: rgba(27, 33, 29, 0.55);
+}
+
+.error {
+  color: #a33;
+  font-size: 0.85rem;
+}
+
+.actions {
+  margin-top: var(--space-sm);
+}
+
+@media (max-width: 600px) {
+  .row2 {
+    grid-template-columns: 1fr;
+  }
+}

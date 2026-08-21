@@ -58,3 +58,27 @@ model Event {
 
   @@index([status, startsAt])
 }
+
+model Member {
+  id                   String    @id @default(cuid())
+  email                String    @unique
+  passwordHash         String
+  firstName            String
+  lastName             String
+  secondaryName        String? // second person's name, for Joint tiers
+  phone                String?
+  addressLine1         String?
+  addressLine2         String?
+  city                 String?
+  postcode             String?
+  country              String?
+  tier                 String // "e-single" | "e-joint" | "paper-single" | "paper-joint"
+  status               String    @default("pending") // "pending" | "active" | "past_due" | "canceled"
+  stripeCustomerId     String?   @unique
+  stripeSubscriptionId String?   @unique
+  currentPeriodEnd     DateTime?
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @updatedAt
+
+  @@index([status])
+}
