@@ -1,12 +1,12 @@
 # Rolls-Royce Enthusiasts' Club
 
-The RREC website: a Next.js app with an admin panel for News and Events.
+The RREC website: a Next.js app with an admin panel for News and Events, and a real membership system (online joining, payment and a member account area).
 
 See [CLAUDE.md](./CLAUDE.md) for setup, commands, and architecture notes.
 
 ## Admin panel
 
-The admin panel lets Club staff publish News posts and Events without touching any code. Only News and Events are managed here — the other pages (About, Membership, History, etc.) are fixed content maintained by a developer.
+The admin panel lets Club staff publish News posts and Events, and manage member records, without touching any code. Only News, Events and Members are managed here — the other pages (About, History, etc.) are fixed content maintained by a developer.
 
 ### Logging in
 
@@ -46,3 +46,20 @@ Events automatically sort into **Upcoming** and **Past** on the public `/events`
 ### About cover images
 
 Uploaded images are stored in Vercel Blob storage on the live site, so anything you upload stays put across deploys — you don't need to host photos anywhere yourself.
+
+## Membership
+
+Visitors join and pay online at **`/membership/join`** — they pick a tier, enter their details, and pay by card via Stripe (the Club never sees or stores card numbers). Once paid, they're automatically signed into their own account at **`/portal`**, where they can see their membership status and renewal date, update their contact details, and manage billing (update card, view invoices, cancel) — the "Manage billing" button hands them off to Stripe's own secure billing page.
+
+Membership renews automatically each year by card, the same way a subscription does — there's no manual renewal step for members or staff.
+
+### Viewing members (admin)
+
+Go to **Members** in the admin nav to see everyone who's signed up, with a status for each:
+
+- **Pending** — started signing up but hasn't completed payment yet.
+- **Active** — paid and current.
+- **Payment overdue** — a renewal payment failed; Stripe will keep retrying automatically.
+- **Canceled** — membership has ended.
+
+Click **View** on anyone to see their full details. From there you can **Grant active membership** (for a comped or offline-paid member, without them paying online) or **Cancel membership** (cancels their Stripe billing too, if they have any).

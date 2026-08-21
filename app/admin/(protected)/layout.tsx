@@ -22,6 +22,7 @@ export default async function AdminProtectedLayout({
           <Link href="/admin">Dashboard</Link>
           <Link href="/admin/news">News</Link>
           <Link href="/admin/events">Events</Link>
+          <Link href="/admin/members">Members</Link>
         </nav>
         <div className={styles.who}>
           <span>{admin.email}</span>

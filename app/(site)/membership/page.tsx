@@ -42,10 +42,16 @@ export default function MembershipPage() {
             <span>Single</span>
             <strong>£69 / yr</strong>
           </div>
+          <Link className={`textLink ${styles.joinLink}`} href="/membership/join?tier=e-single">
+            Join Single →
+          </Link>
           <div className={styles.rate}>
             <span>Joint</span>
             <strong>£79 / yr</strong>
           </div>
+          <Link className={`textLink ${styles.joinLink}`} href="/membership/join?tier=e-joint">
+            Join Joint →
+          </Link>
           <p className={styles.fee}>+ £35 joining fee, first year only.</p>
         </div>
         <div className={styles.tier}>
@@ -54,10 +60,16 @@ export default function MembershipPage() {
             <span>Single</span>
             <strong>£95 / yr</strong>
           </div>
+          <Link className={`textLink ${styles.joinLink}`} href="/membership/join?tier=paper-single">
+            Join Single →
+          </Link>
           <div className={styles.rate}>
             <span>Joint</span>
             <strong>£110 / yr</strong>
           </div>
+          <Link className={`textLink ${styles.joinLink}`} href="/membership/join?tier=paper-joint">
+            Join Joint →
+          </Link>
           <p className={styles.fee}>+ £35 joining fee, first year only.</p>
         </div>
       </div>
@@ -66,18 +78,18 @@ export default function MembershipPage() {
         title="Ready to join?"
         cta={
           <>
-            <Link className="btn btnDark" href="/faqs">
-              Read the FAQs
+            <Link className="btn btnDark" href="/membership/join">
+              Join the Club →
             </Link>{" "}
-            <Link className="textLink" href="/contact">
-              Contact the office →
+            <Link className="textLink" href="/portal/login">
+              Already a member? Sign in →
             </Link>
           </>
         }
       >
         <p>
-          Applications are handled through the Club&rsquo;s membership
-          portal, or you can get in touch directly at{" "}
+          Choose your tier above and apply online, or get in touch directly
+          at{" "}
           <a className="textLink" href="mailto:hello@rrec.org.uk">
             hello@rrec.org.uk
           </a>

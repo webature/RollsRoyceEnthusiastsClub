@@ -3,12 +3,14 @@ import { prisma } from "@/lib/db";
 import styles from "./admin.module.css";
 
 export default async function AdminDashboard() {
-  const [postCount, publishedPostCount, eventCount, publishedEventCount] =
+  const [postCount, publishedPostCount, eventCount, publishedEventCount, activeMemberCount, totalMemberCount] =
     await Promise.all([
       prisma.post.count(),
       prisma.post.count({ where: { status: "published" } }),
       prisma.event.count(),
       prisma.event.count({ where: { status: "published" } }),
+      prisma.member.count({ where: { status: "active" } }),
+      prisma.member.count(),
     ]);
 
   return (
@@ -26,6 +28,10 @@ export default async function AdminDashboard() {
           <strong>{eventCount}</strong>
           <span>Events ({publishedEventCount} published)</span>
         </div>
+        <div className={styles.statCard}>
+          <strong>{totalMemberCount}</strong>
+          <span>Members ({activeMemberCount} active)</span>
+        </div>
       </div>
 
       <div className={styles.actions}>
@@ -34,6 +40,9 @@ export default async function AdminDashboard() {
         </Link>
         <Link className="btn btnGhost" href="/admin/events/new">
           + New event
+        </Link>
+        <Link className="btn btnGhost" href="/admin/members">
+          View members
         </Link>
       </div>
     </>
