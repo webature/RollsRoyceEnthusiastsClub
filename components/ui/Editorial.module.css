@@ -12,8 +12,20 @@
   order: -1;
 }
 
-.image {
+.imageWrap {
+  position: relative;
   min-height: 420px;
+  overflow: hidden;
+}
+
+.image {
+  height: 100%;
+  width: 100%;
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.editorial:hover .image {
+  transform: scale(1.04);
 }
 
 .copy {
@@ -52,7 +64,7 @@
     order: 0;
   }
 
-  .image {
+  .imageWrap {
     min-height: 320px;
   }
 }

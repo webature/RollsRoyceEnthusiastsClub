@@ -3,6 +3,7 @@ import BackgroundVideo from "@/components/ui/BackgroundVideo";
 import Editorial from "@/components/ui/Editorial";
 import CardsGrid from "@/components/ui/CardsGrid";
 import PostList from "@/components/ui/PostList";
+import Reveal from "@/components/ui/Reveal";
 import { getPublishedPosts, formatDate } from "@/lib/content";
 import styles from "./page.module.css";
 
@@ -36,17 +37,20 @@ export default async function Home() {
             </Link>
           </div>
         </div>
+        <div className={styles.scrollCue} aria-hidden="true">
+          <span>Scroll</span>
+        </div>
       </section>
 
       <section className={styles.split}>
-        <div>
+        <Reveal>
           <p className="eyebrow">Established 1957</p>
           <h2>
             More than
             <br />a motor club.
           </h2>
-        </div>
-        <div>
+        </Reveal>
+        <Reveal delay={120}>
           <p className={styles.lead}>
             A worldwide community united by extraordinary motor cars,
             engineering excellence, heritage and friendship.
@@ -60,7 +64,7 @@ export default async function Home() {
           <Link className="textLink" href="/history">
             Our story →
           </Link>
-        </div>
+        </Reveal>
       </section>
 
       <CardsGrid
@@ -90,20 +94,22 @@ export default async function Home() {
       />
 
       <section className={styles.darkPanel}>
-        <p className="eyebrow">Membership</p>
-        <h2>
-          Belong to something
-          <br />
-          <em>remarkable.</em>
-        </h2>
-        <p>
-          Join an international community with access to events, publications,
-          technical seminars, archives and specialist resources — for anyone
-          with a genuine interest in Rolls-Royce and Bentley motor cars.
-        </p>
-        <Link className="btn btnOutline" href="/membership">
-          Explore membership
-        </Link>
+        <Reveal>
+          <p className="eyebrow">Membership</p>
+          <h2>
+            Belong to something
+            <br />
+            <em>remarkable.</em>
+          </h2>
+          <p>
+            Join an international community with access to events, publications,
+            technical seminars, archives and specialist resources — for anyone
+            with a genuine interest in Rolls-Royce and Bentley motor cars.
+          </p>
+          <Link className="btn btnOutline" href="/membership">
+            Explore membership
+          </Link>
+        </Reveal>
       </section>
 
       <Editorial eyebrow="Heritage" title={<>Preserving the past.<br />Inspiring the future.</>} cta={
@@ -118,12 +124,12 @@ export default async function Home() {
 
       {latestPosts.length > 0 ? (
         <section className={styles.newsStrip}>
-          <div className={styles.newsHead}>
+          <Reveal className={styles.newsHead}>
             <h2>Latest news</h2>
             <Link className="textLink" href="/news">
               All news →
             </Link>
-          </div>
+          </Reveal>
           <PostList
             emptyLabel=""
             items={latestPosts.map((post) => ({

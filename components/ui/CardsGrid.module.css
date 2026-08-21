@@ -14,9 +14,18 @@
   display: block;
 }
 
+.imageWrap {
+  overflow: hidden;
+  margin-bottom: var(--space-sm);
+}
+
 .image {
   min-height: 220px;
-  margin-bottom: var(--space-sm);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card a:hover .image {
+  transform: scale(1.06);
 }
 
 .card .eyebrow {
@@ -27,6 +36,23 @@
 .card h3 {
   font-size: 1.6rem;
   margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.arrow {
+  display: inline-block;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.card a:hover .arrow {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .card p {

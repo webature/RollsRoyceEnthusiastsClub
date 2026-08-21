@@ -1,5 +1,5 @@
 .header {
-  position: absolute;
+  position: fixed;
   z-index: 30;
   top: 0;
   left: 0;
@@ -10,6 +10,20 @@
   align-items: center;
   justify-content: space-between;
   color: #fff;
+  background: transparent;
+  box-shadow: none;
+  transition:
+    height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.scrolled {
+  height: 76px;
+  background: rgba(27, 33, 29, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .logo {
@@ -67,6 +81,10 @@
     height: 72px;
   }
 
+  .scrolled {
+    height: 64px;
+  }
+
   .menuBtn {
     display: block;
   }
@@ -74,7 +92,7 @@
   .nav {
     display: none;
     position: absolute;
-    top: 72px;
+    top: 100%;
     left: 0;
     right: 0;
     background: #16201a;

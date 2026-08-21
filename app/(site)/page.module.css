@@ -1,10 +1,11 @@
 .hero {
   position: relative;
-  min-height: 92vh;
+  min-height: 100vh;
   display: flex;
   align-items: flex-end;
   padding: 12vh var(--gutter) var(--space-xl);
   color: #fff;
+  overflow: hidden;
 }
 
 .heroBg {
@@ -13,6 +14,16 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  animation: heroZoom 18s ease-out forwards;
+}
+
+@keyframes heroZoom {
+  from {
+    transform: scale(1.08);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 
 .heroOverlay {
@@ -34,11 +45,15 @@
 .heroCopy .eyebrow {
   color: var(--gold);
   margin-bottom: var(--space-md);
+  opacity: 0;
+  animation: heroLineUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
 }
 
 .heroCopy h1 {
   font-size: var(--text-display);
   margin-bottom: var(--space-md);
+  opacity: 0;
+  animation: heroLineUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.32s forwards;
 }
 
 .heroCopy > p {
@@ -46,6 +61,8 @@
   line-height: 1.6;
   max-width: 42ch;
   margin-bottom: var(--space-lg);
+  opacity: 0;
+  animation: heroLineUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
 }
 
 .actions {
@@ -53,6 +70,80 @@
   gap: var(--space-lg);
   align-items: center;
   flex-wrap: wrap;
+  opacity: 0;
+  animation: heroLineUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.66s forwards;
+}
+
+@keyframes heroLineUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroBg,
+  .heroCopy .eyebrow,
+  .heroCopy h1,
+  .heroCopy > p,
+  .actions {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.scrollCue {
+  position: absolute;
+  z-index: 2;
+  right: var(--gutter);
+  bottom: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  opacity: 0;
+  animation: heroLineUp 1s ease 1s forwards;
+}
+
+.scrollCue span {
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  opacity: 0.75;
+}
+
+.scrollCue::after {
+  content: "";
+  width: 1px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.4);
+  animation: cuePulse 2.2s ease-in-out infinite;
+}
+
+@keyframes cuePulse {
+  0%,
+  100% {
+    transform: scaleY(0.4);
+    transform-origin: top;
+    opacity: 0.4;
+  }
+  50% {
+    transform: scaleY(1);
+    transform-origin: top;
+    opacity: 1;
+  }
+}
+
+@media (max-width: 850px) {
+  .scrollCue {
+    display: none;
+  }
 }
 
 .split {

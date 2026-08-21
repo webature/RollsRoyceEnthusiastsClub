@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import styles from "./Header.module.css";
 
@@ -16,9 +16,17 @@ const NAV_LINKS = [
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className={styles.header}>
+    <header className={scrolled ? `${styles.header} ${styles.scrolled}` : styles.header}>
       <Link className={styles.logo} href="/" onClick={() => setOpen(false)}>
         RREC
         <small>Rolls-Royce Enthusiasts&rsquo; Club</small>
