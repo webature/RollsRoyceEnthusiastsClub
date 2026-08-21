@@ -3,68 +3,91 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--ink);
+  background: var(--app-sidebar);
   padding: var(--gutter);
 }
 
 .card {
   width: 100%;
   max-width: 380px;
-  color: var(--cream);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--app-radius);
+  padding: 2.25rem;
 }
 
 .logo {
-  font-family: var(--font-display);
-  font-size: 1.75rem;
-  margin-bottom: var(--space-xs);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1.4rem;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.3rem;
 }
 
 .subtitle {
-  color: #b7b0a1;
+  color: #a39c8c;
   font-size: 0.85rem;
-  margin-bottom: var(--space-lg);
+  margin-bottom: 1.75rem;
 }
 
 .field {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
-  margin-bottom: var(--space-md);
+  margin-bottom: 1.1rem;
 }
 
 .field label {
   font-size: 0.7rem;
-  letter-spacing: 0.12em;
+  font-weight: 600;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #b7b0a1;
+  color: #a39c8c;
 }
 
 .field input {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--app-radius-sm);
   color: #fff;
-  padding: 0.75rem 0.9rem;
+  padding: 0.7rem 0.85rem;
   font: inherit;
   font-size: 0.95rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .field input:focus {
-  outline: 1px solid var(--gold);
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(162, 138, 98, 0.22);
 }
 
 .error {
   color: #e6a3a3;
+  background: rgba(178, 59, 59, 0.15);
+  border-radius: var(--app-radius-sm);
+  padding: 0.6rem 0.8rem;
   font-size: 0.85rem;
-  margin-bottom: var(--space-md);
+  margin-bottom: 1.1rem;
 }
 
 .submit {
   width: 100%;
   text-align: center;
   cursor: pointer;
+  border-radius: var(--app-radius-sm);
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.submit:hover:not(:disabled) {
+  opacity: 0.92;
 }
 
 .submit:disabled {
-  opacity: 0.6;
+  opacity: 0.5;
   cursor: default;
 }

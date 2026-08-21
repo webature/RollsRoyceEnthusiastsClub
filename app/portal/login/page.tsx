@@ -34,7 +34,7 @@ export default function MemberLoginPage() {
           />
         </div>
 
-        <button type="submit" className={`btn btnOutline ${styles.submit}`} disabled={pending}>
+        <button type="submit" className={`btn ${styles.submit}`} disabled={pending}>
           {pending ? "Signing in…" : "Sign in"}
         </button>
 

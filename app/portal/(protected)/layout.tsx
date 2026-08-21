@@ -2,7 +2,13 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { getCurrentMember } from "@/lib/memberAuth";
 import { memberLogoutAction } from "@/lib/actions/memberAuth";
+import AppNavLink from "@/components/AppNavLink";
 import styles from "./layout.module.css";
+
+const NAV_ITEMS = [
+  { href: "/portal", label: "Dashboard", exact: true },
+  { href: "/portal/profile", label: "Profile" },
+];
 
 export default async function PortalProtectedLayout({
   children,
@@ -14,24 +20,35 @@ export default async function PortalProtectedLayout({
 
   return (
     <div className={styles.shell}>
-      <div className={styles.topbar}>
+      <aside className={styles.sidebar}>
         <Link className={styles.brand} href="/portal">
-          RREC Membership
+          RREC <span className={styles.brandTag}>Membership</span>
         </Link>
         <nav className={styles.nav}>
-          <Link href="/portal">Dashboard</Link>
-          <Link href="/portal/profile">Profile</Link>
+          {NAV_ITEMS.map((item) => (
+            <AppNavLink
+              key={item.href}
+              href={item.href}
+              exact={item.exact}
+              className={styles.navLink}
+              activeClassName={styles.navLinkActive}
+            >
+              {item.label}
+            </AppNavLink>
+          ))}
         </nav>
         <div className={styles.who}>
-          <span>{member.email}</span>
+          <span className={styles.whoEmail}>{member.email}</span>
           <form action={memberLogoutAction}>
             <button type="submit" className={styles.logout}>
               Sign out
             </button>
           </form>
         </div>
+      </aside>
+      <div className={styles.main}>
+        <div className={styles.content}>{children}</div>
       </div>
-      <div className={styles.content}>{children}</div>
     </div>
   );
 }

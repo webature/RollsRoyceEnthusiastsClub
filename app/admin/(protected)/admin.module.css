@@ -2,111 +2,152 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: var(--space-lg);
-  gap: var(--space-md);
+  margin-bottom: 2rem;
+  gap: 1rem;
   flex-wrap: wrap;
 }
 
+.header :global(.btn),
+.actions :global(.btn) {
+  border-radius: var(--app-radius-sm);
+}
+
 .header h1 {
-  font-size: 1.9rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1.6rem;
+  letter-spacing: -0.01em;
   margin: 0;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--space-md);
-  margin-bottom: var(--space-lg);
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
 
 .filterForm {
   display: flex;
-  gap: 0.75rem;
+  gap: 0.6rem;
   align-items: center;
-  margin-bottom: var(--space-lg);
+  margin-bottom: 1.5rem;
 }
 
 .filterForm select {
   font: inherit;
   font-size: 0.85rem;
-  padding: 0.5rem 0.7rem;
-  border: 1px solid var(--line-strong);
-  background: #fff;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--app-border-strong);
+  border-radius: var(--app-radius-sm);
+  background: var(--app-surface);
 }
 
 .statCard {
-  border: 1px solid var(--line-strong);
-  padding: var(--space-md);
+  background: var(--app-surface);
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius);
+  box-shadow: var(--app-shadow);
+  padding: 1.25rem 1.4rem;
 }
 
 .statCard strong {
   display: block;
-  font-family: var(--font-display);
-  font-size: 2.5rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1.9rem;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.2rem;
 }
 
 .statCard span {
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: rgba(27, 33, 29, 0.6);
+  color: var(--app-text-muted);
 }
 
 .table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--app-surface);
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius);
+  box-shadow: var(--app-shadow);
+  overflow: hidden;
 }
 
 .table th {
   text-align: left;
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: rgba(27, 33, 29, 0.55);
-  border-bottom: 1px solid var(--line-strong);
-  padding: 0.6rem 0.75rem;
+  color: var(--app-text-muted);
+  border-bottom: 1px solid var(--app-border);
+  padding: 0.75rem 1.1rem;
+  background: rgba(27, 33, 29, 0.015);
 }
 
 .table td {
-  border-bottom: 1px solid var(--line);
-  padding: 0.85rem 0.75rem;
+  border-bottom: 1px solid var(--app-border);
+  padding: 0.9rem 1.1rem;
   vertical-align: top;
+  font-size: 0.9rem;
+}
+
+.table tr:last-child td {
+  border-bottom: 0;
 }
 
 .table tr:hover td {
-  background: rgba(27, 33, 29, 0.03);
+  background: rgba(27, 33, 29, 0.015);
 }
 
 .status {
-  font-size: 0.65rem;
-  letter-spacing: 0.08em;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  padding: 0.25rem 0.55rem;
-  border: 1px solid var(--line-strong);
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
   display: inline-block;
 }
 
 .statusPublished {
-  color: #2f6b3f;
-  border-color: #2f6b3f;
+  color: var(--app-success);
+  background: var(--app-success-bg);
 }
 
 .statusDraft {
-  color: var(--gold);
-  border-color: var(--gold);
+  color: var(--app-warning);
+  background: var(--app-warning-bg);
 }
 
 .rowActions {
   display: flex;
-  gap: 0.75rem;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  gap: 1rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+.rowActions a {
+  color: var(--app-text);
+}
+
+.rowActions a:hover {
+  color: var(--gold);
 }
 
 .empty {
-  padding: var(--space-lg) 0;
-  color: rgba(27, 33, 29, 0.55);
+  padding: 2rem;
+  color: var(--app-text-muted);
+  background: var(--app-surface);
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius);
+  text-align: center;
 }
 
 /* Forms */
@@ -115,7 +156,12 @@
   max-width: 640px;
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
+  gap: 1.25rem;
+  background: var(--app-surface);
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius);
+  box-shadow: var(--app-shadow);
+  padding: 1.75rem;
 }
 
 .field {
@@ -127,25 +173,28 @@
 .row2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-md);
+  gap: 1.25rem;
 }
 
 .field label {
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: rgba(27, 33, 29, 0.6);
+  color: var(--app-text-muted);
 }
 
 .field input,
 .field textarea,
 .field select {
   font: inherit;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   padding: 0.65rem 0.8rem;
-  border: 1px solid var(--line-strong);
-  background: #fff;
-  color: var(--ink);
+  border: 1px solid var(--app-border-strong);
+  border-radius: var(--app-radius-sm);
+  background: var(--app-surface);
+  color: var(--app-text);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .field textarea {
@@ -157,34 +206,42 @@
 .field input:focus,
 .field textarea:focus,
 .field select:focus {
-  outline: 1px solid var(--gold);
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(162, 138, 98, 0.18);
 }
 
 .hint {
   font-size: 0.75rem;
-  color: rgba(27, 33, 29, 0.55);
+  color: var(--app-text-muted);
 }
 
 .actions {
   display: flex;
   align-items: center;
-  gap: var(--space-md);
-  margin-top: var(--space-sm);
+  gap: 1rem;
+  margin-top: 0.25rem;
 }
 
 .error {
-  color: #a33;
+  color: var(--app-danger);
   font-size: 0.85rem;
+  background: var(--app-danger-bg);
+  border-radius: var(--app-radius-sm);
+  padding: 0.6rem 0.85rem;
 }
 
 .deleteForm button {
   background: none;
   border: 0;
-  color: #a33;
+  color: var(--app-danger);
   cursor: pointer;
   font: inherit;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  font-size: 0.78rem;
+  font-weight: 500;
   padding: 0;
+}
+
+.deleteForm button:hover {
+  text-decoration: underline;
 }

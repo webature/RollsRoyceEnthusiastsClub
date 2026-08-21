@@ -39,6 +39,26 @@
   --line-height-body: 1.75;
 
   --max-width: 1400px;
+
+  /* App UI (admin panel + member portal) — a distinct, modern "product" surface
+     system, separate from the editorial marketing-site look above. Neutral,
+     light, shadow-and-radius based rather than border-and-serif based. */
+  --app-bg: #f6f6f4;
+  --app-surface: #ffffff;
+  --app-sidebar: #16201a;
+  --app-border: rgba(27, 33, 29, 0.09);
+  --app-border-strong: rgba(27, 33, 29, 0.16);
+  --app-text: #1b211d;
+  --app-text-muted: rgba(27, 33, 29, 0.58);
+  --app-radius: 10px;
+  --app-radius-sm: 7px;
+  --app-shadow: 0 1px 2px rgba(20, 24, 21, 0.04), 0 6px 16px rgba(20, 24, 21, 0.05);
+  --app-success: #2f6b3f;
+  --app-success-bg: rgba(47, 107, 63, 0.1);
+  --app-warning: #a2752f;
+  --app-warning-bg: rgba(162, 138, 98, 0.14);
+  --app-danger: #b23b3b;
+  --app-danger-bg: rgba(178, 59, 59, 0.09);
 }
 
 * {

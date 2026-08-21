@@ -14,7 +14,7 @@ export default function AdminLoginPage() {
     <div className={styles.wrap}>
       <form className={styles.card} action={formAction}>
         <div className={styles.logo}>RREC Admin</div>
-        <p className={styles.subtitle}>Sign in to manage news and events.</p>
+        <p className={styles.subtitle}>Sign in to manage news, events and members.</p>
 
         {state?.error ? <p className={styles.error}>{state.error}</p> : null}
 
@@ -33,7 +33,7 @@ export default function AdminLoginPage() {
           />
         </div>
 
-        <button type="submit" className={`btn btnOutline ${styles.submit}`} disabled={pending}>
+        <button type="submit" className={`btn ${styles.submit}`} disabled={pending}>
           {pending ? "Signing in…" : "Sign in"}
         </button>
       </form>
