@@ -2,10 +2,18 @@ import Link from "next/link";
 import BackgroundVideo from "@/components/ui/BackgroundVideo";
 import Editorial from "@/components/ui/Editorial";
 import CardsGrid from "@/components/ui/CardsGrid";
-import PostList from "@/components/ui/PostList";
+import PlaceholderImage from "@/components/ui/PlaceholderImage";
+import Photo from "@/components/ui/Photo";
 import Reveal from "@/components/ui/Reveal";
 import { getPublishedPosts, formatDate } from "@/lib/content";
 import styles from "./page.module.css";
+
+const STATS = [
+  { number: "1957", label: "Founded" },
+  { number: "36", label: "Sections worldwide" },
+  { number: "2", label: "Marques celebrated" },
+  { number: "1000s", label: "Enthusiasts, worldwide" },
+];
 
 export const dynamic = "force-dynamic";
 
@@ -41,6 +49,17 @@ export default async function Home() {
           <span>Scroll</span>
         </div>
       </section>
+
+      <div className={styles.statsStrip}>
+        <Reveal className={styles.statsGrid}>
+          {STATS.map((stat) => (
+            <div key={stat.label} className={styles.stat}>
+              <span className={styles.statNumber}>{stat.number}</span>
+              <span className={styles.statLabel}>{stat.label}</span>
+            </div>
+          ))}
+        </Reveal>
+      </div>
 
       <section className={styles.split}>
         <Reveal>
@@ -94,7 +113,17 @@ export default async function Home() {
       />
 
       <section className={styles.darkPanel}>
-        <Reveal>
+        <Photo
+          src="/images/workshop-bw.jpg"
+          alt=""
+          className={styles.darkPanelBg}
+          sizes="100vw"
+        />
+        <div className={styles.darkPanelOverlay} />
+        <span className={styles.darkPanelMark} aria-hidden="true">
+          ”
+        </span>
+        <Reveal className={styles.darkPanelContent}>
           <p className="eyebrow">Membership</p>
           <h2>
             Belong to something
@@ -130,17 +159,61 @@ export default async function Home() {
               All news →
             </Link>
           </Reveal>
-          <PostList
-            emptyLabel=""
-            items={latestPosts.map((post) => ({
-              slug: post.slug,
-              title: post.title,
-              excerpt: post.excerpt,
-              dateLabel: post.publishedAt ? formatDate(post.publishedAt) : "",
-              href: `/news/${post.slug}`,
-              image: post.coverImage,
-            }))}
-          />
+          <div className={styles.newsGrid}>
+            <Reveal className={styles.newsFeatured}>
+              <Link href={`/news/${latestPosts[0].slug}`}>
+                <div className={styles.newsFeaturedImageWrap}>
+                  {latestPosts[0].coverImage ? (
+                    <Photo
+                      src={latestPosts[0].coverImage}
+                      alt={latestPosts[0].title}
+                      className={styles.newsFeaturedImage}
+                      sizes="(max-width: 850px) 100vw, 55vw"
+                    />
+                  ) : (
+                    <PlaceholderImage className={styles.newsFeaturedImage} />
+                  )}
+                </div>
+                <span className={styles.newsFeaturedDate}>
+                  {latestPosts[0].publishedAt ? formatDate(latestPosts[0].publishedAt) : ""}
+                </span>
+                <h3>
+                  {latestPosts[0].title}
+                  <span className={styles.arrow} aria-hidden="true">→</span>
+                </h3>
+                <p>{latestPosts[0].excerpt}</p>
+              </Link>
+            </Reveal>
+
+            {latestPosts.length > 1 ? (
+              <div className={styles.newsSide}>
+                {latestPosts.slice(1).map((post, index) => (
+                  <Reveal key={post.slug} delay={(index + 1) * 100}>
+                    <Link href={`/news/${post.slug}`} className={styles.newsSideRow}>
+                      <div className={styles.newsSideImageWrap}>
+                        {post.coverImage ? (
+                          <Photo
+                            src={post.coverImage}
+                            alt={post.title}
+                            className={styles.newsSideImage}
+                            sizes="140px"
+                          />
+                        ) : (
+                          <PlaceholderImage className={styles.newsSideImage} />
+                        )}
+                      </div>
+                      <div>
+                        <span className={styles.newsSideDate}>
+                          {post.publishedAt ? formatDate(post.publishedAt) : ""}
+                        </span>
+                        <h4>{post.title}</h4>
+                      </div>
+                    </Link>
+                  </Reveal>
+                ))}
+              </div>
+            ) : null}
+          </div>
         </section>
       ) : null}
     </>
